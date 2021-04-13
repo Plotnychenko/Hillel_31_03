@@ -34,5 +34,4 @@ results_list = []
 for char_1 in my_string:
     for char_2 in my_string:
         results_list.append(int(char_1 + char_2))
-        results_list.sort()
 print(results_list)
