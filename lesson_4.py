@@ -34,7 +34,7 @@
 # print(my_list, my_list[1][3])
 #
 # my_tuple = ([1, 2], my_list)
-# my_tuple[0][0] = "test" # Если в кортеже есть список (вложенная структура), то сам список внутри кортежа можно изменить
+# my_tuple[0][0] = "test" # Если в кортеже есть список(вложенная структура),то сам список внутри кортежа можно изменить
 # print(my_tuple)
 # new_list = [1] * 3
 # new_list_1 = [[1], [2], "test"] * 3
@@ -76,29 +76,7 @@
 
 # Циклы
 
-my_list = ["q", "a", 3, 12]
-
-for value in my_list:
-    print(value)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# my_list = ["q", "a", 3, 12]
+#
+# for value in my_list:
+#     print(value)
