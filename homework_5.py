@@ -37,7 +37,7 @@ print(my_list)
 
 my_str = "24 agasf 31 sad 15 bad  1 asdad 44 qwe"
 result = 0
-for value in my_str.split(" "):
+for value in my_str.split():
     if value.isdigit():
         result += int(value)
 print(result)

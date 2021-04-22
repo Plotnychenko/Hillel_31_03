@@ -13,7 +13,6 @@
 
 my_list = ["qwe", "asf", "gdgds", "okf", "azx", "rgsd"]
 my_result = [value[::-1] if index % 2 else value for index, value in enumerate(my_list)]
-print(my_result)
 
 ################################################
 """
@@ -22,7 +21,6 @@ print(my_result)
 """
 my_list = ["asd", "qwe", "fras", "are", "gjka", "acv", "pork", "all"]
 my_result = [value for value in my_list if value[0] == "a"]
-print(my_result)
 
 ################################################
 """
@@ -31,7 +29,6 @@ print(my_result)
 """
 my_list = ["asd", "qwe", "fras", "re", "gjka", "acv", "pork", "all"]
 my_result = [value for value in my_list if "a" in set(value)]
-print(my_result)
 
 ################################################
 """
@@ -40,7 +37,6 @@ print(my_result)
 """
 my_list = ["asd", 5, 4.32, "qwe", 112, "fras", (2, 4, "qwe"), 11.84, "bgaf"]
 my_result = [value for value in my_list if type(value) == str]
-print(my_result)
 
 ################################################
 """
@@ -49,7 +45,6 @@ print(my_result)
 """
 my_str = "qwtwbqhfsfavbzvnlzki lyiolusr!r"
 my_result = [char_count for char_count in my_str if my_str.count(char_count) == 1]
-print(my_result)
 
 ################################################
 """
@@ -59,7 +54,8 @@ print(my_result)
 my_str_1 ="aaabcdettgpo!ббю"
 my_str_2 ="badddcfggtlk&"
 my_result = list(set([symb for symb in my_str_1 if my_str_2.count(symb) > 0]))
-print(my_result)
+# Тут получилось только так сделать, чтоб символы один раз попадали в список. Иначе в результирующем списке
+# находятся все совпадающие буквы, даже если их несколько
 
 ################################################
 """
@@ -69,7 +65,6 @@ print(my_result)
 my_str_1 ="aaabcdettgpo!ббю"
 my_str_2 ="badddc!fggtlk&"
 my_result = [symb for symb in my_str_1 if my_str_1.count(symb) == 1 and my_str_2.count(symb) == 1]
-print(my_result)
 
 ################################################
 """
