@@ -18,19 +18,18 @@ age_list = []
 for person in persons:
     name_list.append(list(person.values())[0])
     age_list.append(list(person.values())[1])
-young_person = [name_list[name] for name, age in enumerate(age_list) if age == min(age_list)]
+young_person = [name_list[index] for index, age in enumerate(age_list) if age == min(age_list)]
 print(young_person)
 
 # б) Напечатать самое длинное имя. Если длина имени совпадает - напечатать все имена.
 len_name = [len(value) for value in name_list]
-long_name = [name_list[long] for long, length in enumerate(len_name) if length == max(len_name)]
+long_name = [name_list[index] for index, length in enumerate(len_name) if length == max(len_name)]
 print(long_name)
 # в) Посчитать среднее количество лет всех людей из списка.
-all_age = 0
+age_sum = 0
 for value in age_list:
-    all_age += value
-mean_age = all_age/len(age_list)
-print(mean_age)
+    age_sum += value
+mean_age = age_sum/len(age_list)
 
 ################################################
 # Даны два словаря my_dict_1 и my_dict_2.
@@ -47,9 +46,9 @@ my_dict_2 = {
     "job": "PR manager"
 }
 # а) Создать список из ключей, которые есть в обоих словарях.
-keys_list = [key for key in my_dict_1.keys() if key in my_dict_2]
+keys_list = [key for key in my_dict_1 if key in my_dict_2]
 # б) Создать список из ключей, которые есть в первом, но нет во втором словаре.
-keys_list_1 = [key for key in my_dict_1.keys() if key not in my_dict_2]
+keys_list_1 = [key for key in my_dict_1 if key not in my_dict_2]
 # в) Создать новый словарь из пар {ключ:значение}, для ключей, которые есть в первом, но нет во втором словаре.
 new_dict = {key: value for key, value in my_dict_1.items() if key in keys_list_1}
 """
@@ -58,7 +57,6 @@ new_dict = {key: value for key, value in my_dict_1.items() if key in keys_list_1
 если ключ есть в двух словарях - поместить пару {ключ: [значение_из_первого_словаря, значение_из_второго_словаря]},
 """
 total_dict = my_dict_1.copy()
-# keys_list_2 = [key for key in my_dict_2.keys() if key not in my_dict_1]
 for my_key, my_value in my_dict_1.items():
     if my_key in my_dict_2:
         total_dict[my_key] = [my_dict_1.get(my_key)] + [my_dict_2.get(my_key)]
