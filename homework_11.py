@@ -31,20 +31,32 @@ def sort_surname(filename):
 
 # 3
 def sort_by_dday(filename):
-    death_data_list = []
     famous_list = file_reader(filename)
-    years_list = [(re.findall(r'[0-9]+', famous_math_dict["years"])[1]) for famous_math_dict in famous_list]
+    years_list = [int((re.findall(r'[0-9]+', famous_math_dict["years"])[1])) for famous_math_dict in famous_list]
+    for index, math_dict in enumerate(famous_list):
+        if "BC" in math_dict["years"]:
+            years_list[index] = -1 * years_list[index]
     return years_list
 
+
+def sort_by_dday_var_2(filename):
+    famous_list = file_reader(filename)
+    years_list = [int((re.findall(r'[0-9]+', famous_math_dict["years"])[1])) for famous_math_dict in famous_list]
+    for index, math_dict in enumerate(famous_list):
+        if "BC" in math_dict["years"]:
+            years_list[index] = -1 * years_list[index]
+    death_data_list = [abs(year) for year in sorted(years_list)]
+    return death_data_list
 
 # 4
 def sort_len_text(filename):
     data_list = file_reader(filename)
-    text_list = [text["text"].rstrip(".").split() for text in data_list]
+    text_list = [text["text"].split() for text in data_list]
     return text_list
 
 
 filename = "data.json"
-# math_list = sorted(sort_by_dday(filename))
-# math_list = sorted(sort_len_text(filename), key=len)
-print(math_list)
+name_sort = sorted(sort_surname(filename))
+death_data_sort = sorted(sort_by_dday(filename))
+death_data_sort_2 = sort_by_dday_var_2(filename)
+text_len_sort = sorted(sort_len_text(filename), key=len)
