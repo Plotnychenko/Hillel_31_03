@@ -40,36 +40,32 @@ def create_surnames_list(filename):
 """
 
 
-def create_data_original_list(filename):
+def create_date_original_list(filename):
     with open(filename, "r") as txt_files:
         info_list = txt_files.readlines()
     info_list = [value.split(" - ")[0].split() for value in info_list if " - " in value]
-    data_original_list = [value for value in info_list if len(value) == 3]
-    return data_original_list
+    date_original_list = [value for value in info_list if len(value) == 3]
+    return date_original_list
 
 
-def create_data_modified_list(filename):
-    data_mod_list = create_data_original_list(filename)
-    for day in data_mod_list:
-        day[0] = day[0].rstrip("nsthrd")
-        if len(day[0]) == 1:
-            day[0] = "0" + day[0]
-        day[1] = month_dict[day[1]]
-        data_modified_list = ["/".join(day) for day in data_mod_list]
-    return data_modified_list
+def modified_date(date):
+    date[0] = date[0].rstrip("nsthrd")
+    if len(date[0]) == 1:
+        date[0] = "0" + date[0]
+    date[1] = month_dict[date[1]]
+    return "/".join(date)
 
 
-def create_list_data_dict(filename):
-    list_data_dict = []
-    data_original_list = create_data_modified_list(filename)
-    data_origin_list = [" ".join(data) for data in data_original_list]
-    data_modified_list = create_data_modified_list(filename)
+def create_list_date_dict(filename):
+    list_date_dict = []
+    date_original_list = create_date_original_list(filename)
     index = 0
-    while index < len(data_original_list):
-        dict_data = {"data_original": data_origin_list[index], "data_modified": data_modified_list[index]}
-        list_data_dict.append(dict_data)
+    while index < len(date_original_list):
+        original_date = " ".join(date_original_list[index])  # В функции create_date_original_list я делаю split по пробелам, из-за этого в этой строчке необходимо заново делать join с пробелом
+        dict_date = {"data_original": original_date, "data_modified": modified_date(date_original_list[index])}
+        list_date_dict.append(dict_date)
         index += 1
-    return list_data_dict
+    return list_date_dict
 
 
 month_dict = {"January": "01",
@@ -93,5 +89,4 @@ filename = "names.txt"
 surnames_list = create_surnames_list(filename)
 
 filename = "authors.txt"
-data_dict = create_list_data_dict(filename)
-print(data_dict)
+date_dict = create_list_date_dict(filename)
